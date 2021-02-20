@@ -54,24 +54,25 @@ Extremely fast storage directly on the CPU that allows for quick logic/arithmeti
 
 16 RAX registers are available for general purpose(GPR general purpose registers).
 
+#### 64 - Low32 - Low16 - Low8 - Notes
 ```
-RAX		EAX     Accumulator 
-RBX		EBX     Base
-RCX		ECX     Counter
-RDX		EDX     Data
-RSP		ESP     Stack Pointer
-RBP		EBP     Base Pointer
-RSI		ESI     Source Index
-RDI		EDI     Destination Index
-R7		R7D     Only on 64 bit
-R8      R8D     Only on 64 bit
-R9      R9D     Only on 64 bit
-R10     R10D    Only on 64 bit
-R11     R11D    Only on 64 bit
-R12     R12D    Only on 64 bit
-R13     R13D    Only on 64 bit
-R14     R14D    Only on 64 bit
-R15     R15D    Only on 64 bit
+RAX		EAX     AX      AH/AL   Accumulator     
+RBX		EBX     BX      BH/BL   Base    
+RCX		ECX     CX      CH/CL   Counter 
+RDX		EDX     DX      DH/DL   Data    
+RSP		ESP     SP      SPL     Stack Pointer   
+RBP		EBP     BP      BPL     Base Pointer    
+RSI		ESI     SI      SIL     Source Index    
+RDI		EDI     DI      DIL     Destination Index   
+R7		R7D     R7W     R7B     Only on 64 bit  
+R8      R8D     R8W     R8B     Only on 64 bit  
+R9      R9D     R9W     R9B     Only on 64 bit  
+R10     R10D    R10W    R10B    Only on 64 bit  
+R11     R11D    R11W    R11B    Only on 64 bit  
+R12     R12D    R12W    R12B    Only on 64 bit  
+R13     R13D    R13W    R13B    Only on 64 bit  
+R14     R14D    R14W    R14B    Only on 64 bit  
+R15     R15D    R15W    R15B    Only on 64 bit  
 ``` 
 
 
@@ -151,16 +152,38 @@ In order to return data, it automatically looks at RAX register:
 
 ---
 ### Boolean Instructions
+
 * AND - ANDx RDX, RAX
 * OR - ORx RDX, RAX
+* NOT - RAX (flips the bit)
+* XOR - XOR RDX, RAX
 
---- 
+CPU must always perform operations on 8, 16, 32 or 64 bits at once. Result gets stored in op2 for AT&T syntax
+```
+10011011
+&&&&&&&&
+10101100
+=
+10001000
+```
+
+---
+
+### Shift Operations
+SHL - shift left, multiplies by 2 to the power of X
+SHR - shift right, divides by 2 to the power of X
+SAR - Shift arithmetic right, signed divide
+
+
+---
 
 ### Assembler Directives AT&T
 * `.global` - (same as `global` in Intel)
 
 
 
+
+---
 
 
 
