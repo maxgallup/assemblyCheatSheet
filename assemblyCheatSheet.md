@@ -26,6 +26,18 @@ movb $6, %bl
 addb %bl, %al
 ```
 
+* Register names are prefixed by the `%` character 
+* Literal/Immediate values are prefixed with the `$` character
+
+```
+foo: .byte 12
+bar: .quad 34
+movq $foo, %rax     # Load the address of foo into RAX
+movq 1(%rax), %rbx  # Load the value of bar into RBX
+```
+Here we reserved space for the variables `foo` and `bar`. We then load the address of `foo` into `RAX`. In the second mov instruction we use the offset notation to calculate the address of `bar`, i.e. us should read 1(%`rax`) as "one plus the contents of the `RAX` register". 
+
+
 ### Source and Destination Operands
 Intel vs AT&T source destination are swapped!
 
