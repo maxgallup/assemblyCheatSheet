@@ -180,8 +180,52 @@ SAR - Shift arithmetic right, signed divide
 ### Assembler Directives AT&T
 * `.global` - (same as `global` in Intel)
 
+#### Declaring constants: .equ
+`.equ NAME, EXPRESSION` - The .equ directive can ve used to define symbolic names for expressions, such as numeric constants.
+```
+.equ FOO, 1024
+pushq $FOO     # push 1024
 
+```
+#### Declaring Variables: .byte .word .long .quad
+```
+.byte VALUE # reserves 1 byte of memory
+.word VALUE # reserves 2 bytes of memory
+.long VALUE # reserves 4 bytes of memory
+.quad VALUE # reserves 8 bytes of memory
+```
+These directives can be used to reserver and initialise memory for variables and/or constants. Just as the assembler translates instructions into bits of memory contents directly, these directives will be transformed into memory contents as well, i.e. there is no special magic involved here. Each directive allows you to define more than one value in a comma separated list.
+```
+FOO: .byte 0xAA, 0xBB, 0xCC # three bytes starting at address FOO 
+BAR: .word 2718, 2818 # a couple of words
+BAZ: .long 0xDEADBEEF # a single long
+BAK: .quad 0xDEADBEEFBAADF00D # a single quadword
 
+# Following statements are completely equivalent (little endian)
+FOO: .byte 0x0D, 0xF0, 0xAD, 0xBA, 0xEF, 0xBE, 0xAD, 0xDE 
+FOO: .word 0xF00D , 0xBAAD, 0xBEEF, 0xDEAD
+FOO: .long 0xBADF00D , 0xDEADBEEF
+FOO: .quad 0xDEADBEEFBAADF00D
+```
+
+#### Reserving Memory: .skip
+`BUFFER .skip 1024` - sometimes it's necessary to reserver bigger chunks of memory, in this case 1024 bytes of memory are being reserved.
+
+#### Section Directives: .bss .text .data
+The memory space of a program is divided into three different *sections*. These directives tell the assembler in which section it should put the subsequent code. The `.text` segment is intended ot hold all instructions, it is read-only. One can include constants and ASCII strings in this segment. the `.data` segment is used for initialized variables (variables that receive an initial value at the time you write your program, such as those created with the `.word` directive). The `.bss` segment is intended to hold the uninitialized variables (variables that receive a value only at runtime).
+
+#### String variables: .ascii, .asciz
+```
+WELCOME: .ascii "Hello!!"
+         .byte 0x00 
+
+WELCOME: .asciz "Hello!!" #automatically adds null terminating byte
+```
+These directives can be used to reserve and initialize blocks of ASCII encoded characters. In many higher level programming languages, strings are simply blocks of ASCII codes terminated by a zero byte (0x00). The `.asciz` directive adds such a zero bute automatically.
+
+#### Global Symbols .global
+This directive enters a label into the symbol table which is like a table of contents contained in the binary assembly file. Publishing labels in the symbol table is useful if you want other programs to have access to your labels, e.g. if you want the labels to be visible in the debugger or if you want other programs to use your subroutines. One very important use of the symbol table is to export the main label. **This label must ne exported** because the operating system needs to know where to start running your program. 
+`.global main`
 
 ---
 
