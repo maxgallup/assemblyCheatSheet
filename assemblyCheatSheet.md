@@ -86,6 +86,11 @@ R13     R13D    R13W    R13B    Only on 64 bit
 R14     R14D    R14W    R14B    Only on 64 bit  
 R15     R15D    R15W    R15B    Only on 64 bit  
 ``` 
+```
+The list of callee saved registers is: 
+%RBX, %RSP, %RBP, %R12, %R13, %R14 and %R15, 
+all other registers are caller saved and may be modified by subroutines.
+```
 
 
 ### Special Registers
