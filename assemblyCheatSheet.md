@@ -68,23 +68,23 @@ Extremely fast storage directly on the CPU that allows for quick logic/arithmeti
 
 #### 64 - Low32 - Low16 - Low8 - Notes
 ```
-RAX		EAX     AX      AH/AL   Accumulator     
-RBX		EBX     BX      BH/BL   Base    
-RCX		ECX     CX      CH/CL   Counter 
-RDX		EDX     DX      DH/DL   Data    
-RSP		ESP     SP      SPL     Stack Pointer   
-RBP		EBP     BP      BPL     Base Pointer    
-RSI		ESI     SI      SIL     Source Index    
-RDI		EDI     DI      DIL     Destination Index   
-R7		R7D     R7W     R7B     Only on 64 bit  
-R8                R8D     R8W     R8B     Only on 64 bit  
-R9                R9D     R9W     R9B     Only on 64 bit  
-R10               R10D    R10W    R10B    Only on 64 bit  
-R11               R11D    R11W    R11B    Only on 64 bit  
-R12               R12D    R12W    R12B    Only on 64 bit  
-R13               R13D    R13W    R13B    Only on 64 bit  
-R14               R14D    R14W    R14B    Only on 64 bit  
-R15               R15D    R15W    R15B    Only on 64 bit  
+RAX     EAX     AX      AH/AL   Accumulator     
+RBX     EBX     BX      BH/BL   Base    
+RCX     ECX     CX      CH/CL   Counter 
+RDX     EDX     DX      DH/DL   Data    
+RSP     ESP     SP      SPL     Stack Pointer   
+RBP     EBP     BP      BPL     Base Pointer    
+RSI     ESI     SI      SIL     Source Index    
+RDI     EDI     DI      DIL     Destination Index   
+R7      R7D     R7W     R7B     Only on 64 bit  
+R8      R8D     R8W     R8B     Only on 64 bit  
+R9      R9D     R9W     R9B     Only on 64 bit  
+R10     R10D    R10W    R10B    Only on 64 bit  
+R11     R11D    R11W    R11B    Only on 64 bit  
+R12     R12D    R12W    R12B    Only on 64 bit  
+R13     R13D    R13W    R13B    Only on 64 bit  
+R14     R14D    R14W    R14B    Only on 64 bit  
+R15     R15D    R15W    R15B    Only on 64 bit  
 ``` 
 ```
 The list of callee saved registers is: 
