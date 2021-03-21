@@ -93,7 +93,7 @@ all other registers are caller saved and may be modified by subroutines.
 ```
 
 
-### Special Registers
+### Special Registers (hardware implemented)
 * `RIP` - Instruction Pointer, points to the spot in RAM where instructions are being read from
 * `RFLAGS` - The flags register, maintains flags so we can check the conditions from recent instructions.
 * `S[]` - The x87 floating point unit uses its own register set (largely legacy).
